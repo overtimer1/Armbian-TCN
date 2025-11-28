@@ -54,7 +54,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  RELEASE: "oracular plucky noble bookworm trixie"
+  RELEASE: "trixie"
 
 jobs:
   # ====================================================================
@@ -114,8 +114,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        BOARD: [lemonpi, som3588-cat]
-        BRANCH: [edge, vendor]
+        BOARD: [lckfb-taishanpi]
+        BRANCH: [vendor]
 
     steps:
       - name: "Checkout Board Source"
@@ -203,8 +203,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        BOARD: [ lemonpi, som3588-cat ]
-        BRANCH: [ edge, vendor ]
+        BOARD: [ lckfb-taishanpi ]
+        BRANCH: [ vendor ]
         RELEASE: ${{ fromJson(needs.Prepare_Build.outputs.RELEASE) }}
         DESKTOP: ${{ fromJson(needs.Prepare_Build.outputs.DESKTOP) }}
         

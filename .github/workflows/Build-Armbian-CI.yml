@@ -114,8 +114,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        BOARD: [lckfb-taishanpi]
-        BRANCH: [vendor]
+        BOARD: [nanopim3]
+        BRANCH: [edge]
 
     steps:
       - name: "Checkout Board Source"
@@ -184,6 +184,7 @@ jobs:
             BETA="${{ needs.Prepare_Build.outputs.NIGHTLY }}" \
             PREFER_DOCKER="${{ needs.Prepare_Build.outputs.DOCKER }}" \
             EXPERT="yes" \
+            INSTALL_HEADERS="yes" \
             VENDOR=Armbian
 
       - name: "Upload Kernel Artifact"
@@ -203,8 +204,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        BOARD: [ lckfb-taishanpi ]
-        BRANCH: [ vendor ]
+        BOARD: [ nanopim3 ]
+        BRANCH: [ edge ]
         RELEASE: ${{ fromJson(needs.Prepare_Build.outputs.RELEASE) }}
         DESKTOP: ${{ fromJson(needs.Prepare_Build.outputs.DESKTOP) }}
         
